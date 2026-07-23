@@ -42,7 +42,7 @@ export default function Login(){
 
         <Ionicons
           name="cloud-outline"
-          size={70}
+          size={90}
           color="#7FA7D8"
         />
 
