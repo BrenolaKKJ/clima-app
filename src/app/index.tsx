@@ -2,7 +2,14 @@ import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { auth } from "../../services/firebase";
 
 export default function Index() {
@@ -19,66 +26,102 @@ export default function Index() {
   }
 
   return (
-    <View style={styles.container}>
-      <Ionicons name="cloud-outline" size={90} color="#6C8DB5" />
+    <ImageBackground
+      source={require("../../assets/images/teladefundo.png")}
+      style={styles.background}
+      imageStyle={styles.backgroundImage}
+      resizeMode="cover"
+    >
+      <View style={styles.overlay}>
 
-      <Text style={styles.title}>
-        Bem vindo
-      </Text>
-
-      <Text style={styles.subtitle}>
-        Entre na sua conta para continuar
-      </Text>
-
-      <View style={styles.inputBox}>
-        <Ionicons name="mail-outline" size={22} color="#64748B" />
-
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          placeholderTextColor="#64748B"
-          keyboardType="email-address"
-          autoCapitalize="none"
-          value={email}
-          onChangeText={setEmail}
+        <Ionicons
+          name="cloud-outline"
+          size={90}
+          color="#6C8DB5"
         />
-      </View>
 
-      <View style={styles.inputBox}>
-        <Ionicons name="lock-closed-outline" size={22} color="#64748B" />
-
-        <TextInput
-          style={styles.input}
-          placeholder="Senha"
-          placeholderTextColor="#64748B"
-          secureTextEntry
-          value={senha}
-          onChangeText={setSenha}
-        />
-      </View>
-
-      <TouchableOpacity style={styles.button} onPress={entrar}>
-        <Text style={styles.buttonText}>
-          Entrar
+        <Text style={styles.title}>
+          Bem-vindo
         </Text>
-      </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => router.push("/register")}>
-        <Text style={styles.create}>
-          Criar conta
+        <Text style={styles.subtitle}>
+          Entre na sua conta para continuar
         </Text>
-      </TouchableOpacity>
-    </View>
+
+        <View style={styles.inputBox}>
+          <Ionicons
+            name="mail-outline"
+            size={22}
+            color="#64748B"
+          />
+
+          <TextInput
+            style={styles.input}
+            placeholder="Email"
+            placeholderTextColor="#64748B"
+            keyboardType="email-address"
+            autoCapitalize="none"
+            value={email}
+            onChangeText={setEmail}
+          />
+        </View>
+
+        <View style={styles.inputBox}>
+          <Ionicons
+            name="lock-closed-outline"
+            size={22}
+            color="#64748B"
+          />
+
+          <TextInput
+            style={styles.input}
+            placeholder="Senha"
+            placeholderTextColor="#64748B"
+            secureTextEntry
+            value={senha}
+            onChangeText={setSenha}
+          />
+        </View>
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={entrar}
+        >
+          <Text style={styles.buttonText}>
+            Entrar
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => router.push("/register")}
+        >
+          <Text style={styles.create}>
+            Criar conta
+          </Text>
+        </TouchableOpacity>
+
+      </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+
+  background: {
     flex: 1,
-    backgroundColor: "#D8E3EC",
+  },
+
+  backgroundImage: {
+    width: "100%",
+    height: "100%",
+  },
+
+  overlay: {
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 20,
+    backgroundColor: "rgba(255,255,255,0.12)",
   },
 
   title: {
@@ -99,7 +142,7 @@ const styles = StyleSheet.create({
   inputBox: {
     width: 300,
     height: 55,
-    backgroundColor: "rgba(255,255,255,0.65)",
+    backgroundColor: "rgba(255,255,255,0.70)",
     borderRadius: 14,
     flexDirection: "row",
     alignItems: "center",
@@ -140,4 +183,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 15,
   },
+
 });
