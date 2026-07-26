@@ -92,7 +92,7 @@ export default function Home() {
       </Text>
 
       <Text style={styles.label}>
-        Escolha uma cidade
+        Escolha uma lugar
       </Text>
 
       <CityPicker
